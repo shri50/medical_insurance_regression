@@ -15,13 +15,12 @@ def get_data():
             data = request.form
             class_obj = MedicalInsurance(data)
             result = class_obj.get_insurnace_price_prediction()
-            return render_template('index.html',prediction = result)
+            return render_template('result.html',prediction = result)
         else: 
             print(f"wrong method")
             return "Wrong method"
     except: 
         print(traceback.print_exc())
-        return render_template('result.html')
-
+        return "Prediction Failed"
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=5050, debug =True)
